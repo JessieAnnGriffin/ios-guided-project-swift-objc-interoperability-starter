@@ -13,6 +13,10 @@
 NS_SWIFT_NAME(ContactsController)
 @interface LSIContactsController : NSObject
 
-@property (nonatomic, readonly, copy, nonnull) NSArray<LSIContact *> *contacts; // nullable or nonnull = optional or non-optional 
+@property (nonatomic, readonly, copy, nonnull) NSArray<LSIContact *> *contacts; // nullable or nonnull = optional or non-optional
+
+- (nonnull LSIContact *)contactAtIndex:(NSInteger)index;
+
+@property (nonatomic, readonly) NSInteger contactCount; // NSInteger always gets translated as int in Swift
 
 @end

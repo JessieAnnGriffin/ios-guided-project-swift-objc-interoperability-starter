@@ -33,4 +33,14 @@
     return _internalContacts.copy;
 }
 
+- (nonnull LSIContact *)contactAtIndex:(NSInteger)index
+{
+    return [_internalContacts objectAtIndex:index];
+}
+
+- (NSInteger)contactCount
+{
+    return _internalContacts.count;
+}
+
 @end
