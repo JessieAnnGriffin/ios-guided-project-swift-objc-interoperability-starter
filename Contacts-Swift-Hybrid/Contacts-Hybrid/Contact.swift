@@ -7,13 +7,14 @@
 //
 
 import Foundation
+// or use @objcMembers for everything below this line
+@objc
+class Contact: NSObject {
 
-class Contact {
+    @objc var name: String
+    @objc var relationship: String?
 
-    var name: String
-    var relationship: String?
-
-    init(name: String, relationship: String?) {
+    @objc init(name: String, relationship: String?) {
         self.name = name
         self.relationship = relationship
     }
