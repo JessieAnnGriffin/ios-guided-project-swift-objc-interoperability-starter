@@ -7,10 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "LSIPerson.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface LSIPersonSearchTableViewController : UITableViewController
+
+@property (nonatomic) NSArray<LSIPerson *> *people;
 
 @end
 

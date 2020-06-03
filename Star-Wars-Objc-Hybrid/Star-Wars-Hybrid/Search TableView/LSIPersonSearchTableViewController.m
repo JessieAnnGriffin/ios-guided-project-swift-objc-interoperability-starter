@@ -7,6 +7,7 @@
 //
 
 #import "LSIPersonSearchTableViewController.h"
+#import "Star_Wars_Hybrid-Swift.h"
 
 // TODO: 1. Add both PersonController.swift and PersonTableViewCell.swift to the target
 // TODO: 2. Fix the missing class using the bridging header issue
@@ -39,7 +40,7 @@
 	UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"PersonCell" forIndexPath:indexPath];
     
 	// TODO: Set the cell to the current Person object
-	
+
 	
     return cell;
 }
@@ -48,7 +49,15 @@
     
 	
 	// TODO: Search for a person using the searchBar.text
-    
+    [LSIPersonController.shared searchForPeopleWith:searchBar.text
+                                         completion:^(NSArray<LSIPerson *> *people, NSError *error) {
+        if (error) {
+            NSLog(@"Error searching for %@: %@", searchBar.text, error);
+        }
+
+        self.people = people;
+        [self.tableView reloadData];
+    }];
 	// TODO: Save the result and have the UI update itself
 }
 
