@@ -8,6 +8,25 @@
 
 #import "ContactsController.h"
 
+@interface ContactsController ()
+
+@property (nonatomic) NSMutableArray *internalContacts;
+
+@end
+
 @implementation ContactsController
+
+- (instancetype)init
+{
+    if (self = [super init]) {
+        _internalContacts = [[NSMutableArray alloc] init];
+    }
+    return self;
+}
+
+- (NSArray *)contacts
+{
+    return _internalContacts.copy;
+}
 
 @end
