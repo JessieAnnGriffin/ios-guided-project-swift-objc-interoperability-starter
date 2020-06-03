@@ -21,7 +21,7 @@ class PersonController: NSObject {
     
     // TODO: Add LSIPerson.h to bridging header
     // TODO: Add PersonController.swift to target
-    func searchForPeople(with searchTerm: String, completion: @escaping ([LSIPerson]?, Error?) -> Void) {
+    func searchForPeople(with searchTerm: String, completion: @escaping ([Person]?, Error?) -> Void) {
         var components = URLComponents(url: baseURL, resolvingAgainstBaseURL: true)!
         let searchItem = URLQueryItem(name: "search", value: searchTerm)
         components.queryItems = [searchItem]
@@ -45,7 +45,7 @@ class PersonController: NSObject {
             // TODO: Decode the JSON
 
             do {
-                guard let fictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [String : Any] else {
+                guard let dictionary = try JSONSerialization.jsonObject(with: data, options: []) as? [String : Any] else {
                     throw APIError.JSONDecodeError
                 }
 
@@ -53,12 +53,15 @@ class PersonController: NSObject {
                     throw APIError.JSONMissingResults
                 }
 
-//                let people = personDictionaries.compactMap { Person }
+                let people = personDictionaries.compactMap { Person(dictionary: $0) }
+                DispatchQueue.main.async {
+                    completion(people, nil)
+                }
             } catch {
-
-
+                DispatchQueue.main.async {
+                    completion(nil, error)
+                }
             }
-            
         }.resume()
     }
 }
