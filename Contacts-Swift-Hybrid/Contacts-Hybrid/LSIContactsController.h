@@ -12,7 +12,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface ContactsController : NSObject
+@interface LSIContactsController : NSObject
 
 @property (nonatomic, readonly, copy) NSArray<Contact *> *contacts;
 
