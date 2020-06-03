@@ -49,8 +49,8 @@
     
 	
 	// TODO: Search for a person using the searchBar.text
-    [LSIPersonController.shared searchForPeopleWith:searchBar.text
-                                         completion:^(NSArray<LSIPerson *> *people, NSError *error) {
+    [LSIPersonController.sharedController searchForPeopleWithSearchterm:searchBar.text
+                                                      completionHandler:^(NSArray<LSIPerson *> *people, NSError *error) {
         if (error) {
             NSLog(@"Error searching for %@: %@", searchBar.text, error);
         }
