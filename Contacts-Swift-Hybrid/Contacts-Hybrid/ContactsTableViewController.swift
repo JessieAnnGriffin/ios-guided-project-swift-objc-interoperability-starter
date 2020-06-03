@@ -24,14 +24,17 @@ class ContactsTableViewController: UITableViewController {
 	
 	override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // TODO: Implement controller count
-		return 0
+        return contactsController.contacts.count // this actually makes a copy of the array "contacts"
 	}
 	
 	override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 		let cell = tableView.dequeueReusableCell(withIdentifier: "ContactCell", for: indexPath)
         
-        // TODO: Implement display logic
-		
+        let contact = contactsController.contacts[indexPath.row];
+
+        cell.textLabel?.text = contact.name
+        cell.detailTextLabel?.text = contact.relationship
+
 		return cell
 	}
 
