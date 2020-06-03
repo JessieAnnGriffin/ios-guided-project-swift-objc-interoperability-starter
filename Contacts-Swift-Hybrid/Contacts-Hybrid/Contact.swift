@@ -8,7 +8,7 @@
 
 import Foundation
 // or use @objcMembers for everything below this line
-@objc
+@objc(LSIContact)
 class Contact: NSObject {
 
     @objc var name: String
